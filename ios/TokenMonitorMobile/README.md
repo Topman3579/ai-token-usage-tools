@@ -32,7 +32,7 @@ xcodebuild -project TokenMonitorMobile.xcodeproj \
 If the macOS Token Monitor widget is hosting its hub on port `17321`, expose it only to your tailnet:
 
 ```bash
-tailscale serve --bg 17321
+tailscale serve --bg --https=17321 17321
 tailscale serve status
 ```
 
