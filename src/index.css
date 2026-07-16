@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  font-family: 'Noto Sans Thai', system-ui, sans-serif;
+  color: #f7f9fc;
+  background: #071223;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --navy: #0a1426;
+  --navy-deep: #071223;
+  --navy-soft: #0e1d34;
+  --gold: #ffcb2d;
+  --white: #f7f9fc;
+  --muted: #91a7c7;
+  --line: #263b5a;
+  --line-strong: #496383;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; min-height: 100vh; background: var(--navy-deep); }
+button, a { font: inherit; }
+a { color: inherit; }
+button { color: inherit; }
+::selection { color: var(--navy-deep); background: var(--gold); }
+
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
