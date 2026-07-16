@@ -1,0 +1,411 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03C008045F078B54AC75E356 /* TokenMonitorModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDF31FFB78B652B25CAE953 /* TokenMonitorModels.swift */; };
+		0BC1377E567F9B6B1B938F70 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6879FA64FF823F12774F0C37 /* DashboardView.swift */; };
+		2B6C898F88274E5C93F25C33 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C533956DFE3985DF1E98FCAC /* KeychainStore.swift */; };
+		47D84CD98A5090C898FD6F5C /* TokenMonitorMobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D5166F97A70DBC5A85EEDB /* TokenMonitorMobileApp.swift */; };
+		805DDE4DFCE24D4A6E31D7D6 /* TokenMonitorClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF2AE83D961589CF442FC7 /* TokenMonitorClient.swift */; };
+		81984377D4FBF1DFD4C01002 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE19D9BBB8B64F7182E469D /* AppTheme.swift */; };
+		9A61D412CFEAC2C2D182C838 /* HubCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F9D96F3FA994EFF5343FE9 /* HubCredentials.swift */; };
+		ADDA08FFF2E8536986A47BAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 670A41D32BADE5B049A8545B /* Assets.xcassets */; };
+		B7431FA69D5F41A201B3D032 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 800FCFEE08475541115AEC65 /* PrivacyInfo.xcprivacy */; };
+		E097B07FE985AEB5CC5E2892 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2652CF6E9A4D25F106150 /* SettingsView.swift */; };
+		E61D408DCAE978D342290DA1 /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C989B4C8C6E3CD14F45863 /* DashboardModel.swift */; };
+		F7F8AE607DF303DBA6F8BFE4 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9913F96EE462662A2F82894B /* AppView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		25C989B4C8C6E3CD14F45863 /* DashboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
+		2EDF31FFB78B652B25CAE953 /* TokenMonitorModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenMonitorModels.swift; sourceTree = "<group>"; };
+		670A41D32BADE5B049A8545B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6879FA64FF823F12774F0C37 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		800FCFEE08475541115AEC65 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		84BF2AE83D961589CF442FC7 /* TokenMonitorClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenMonitorClient.swift; sourceTree = "<group>"; };
+		9913F96EE462662A2F82894B /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		A7F2652CF6E9A4D25F106150 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		ADD6A237DDA38E8CED900C22 /* TokenMonitorMobile.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = TokenMonitorMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C533956DFE3985DF1E98FCAC /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
+		C7D5166F97A70DBC5A85EEDB /* TokenMonitorMobileApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenMonitorMobileApp.swift; sourceTree = "<group>"; };
+		DFE19D9BBB8B64F7182E469D /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		F8F9D96F3FA994EFF5343FE9 /* HubCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubCredentials.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		03DD302C045D06AB392801FD /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9913F96EE462662A2F82894B /* AppView.swift */,
+				C7D5166F97A70DBC5A85EEDB /* TokenMonitorMobileApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		25FD9236358A18C1F046187F /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				B15C9D9E88E0A382FE9E2D48 /* Dashboard */,
+				2E6D09431439CA6A83CFC0DD /* Settings */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		2E6D09431439CA6A83CFC0DD /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A7F2652CF6E9A4D25F106150 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		59604C82B7236FEB273486B0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2EDF31FFB78B652B25CAE953 /* TokenMonitorModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6FD897FBFCA92DCCD71480C5 = {
+			isa = PBXGroup;
+			children = (
+				B0EC520C0FADA25B4281184E /* Sources */,
+				FC158E7F7BE351B983E43671 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		905AA81CCA42F87B9EFF8EF7 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				DFE19D9BBB8B64F7182E469D /* AppTheme.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		B0EC520C0FADA25B4281184E /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				670A41D32BADE5B049A8545B /* Assets.xcassets */,
+				800FCFEE08475541115AEC65 /* PrivacyInfo.xcprivacy */,
+				03DD302C045D06AB392801FD /* App */,
+				905AA81CCA42F87B9EFF8EF7 /* Design */,
+				25FD9236358A18C1F046187F /* Features */,
+				59604C82B7236FEB273486B0 /* Models */,
+				BBC7F1F28182CA00242AAAE4 /* Services */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		B15C9D9E88E0A382FE9E2D48 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				25C989B4C8C6E3CD14F45863 /* DashboardModel.swift */,
+				6879FA64FF823F12774F0C37 /* DashboardView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		BBC7F1F28182CA00242AAAE4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F8F9D96F3FA994EFF5343FE9 /* HubCredentials.swift */,
+				C533956DFE3985DF1E98FCAC /* KeychainStore.swift */,
+				84BF2AE83D961589CF442FC7 /* TokenMonitorClient.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		FC158E7F7BE351B983E43671 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ADD6A237DDA38E8CED900C22 /* TokenMonitorMobile.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F7F233059AE67AA4588601A9 /* TokenMonitorMobile */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 485418236BB1F6028BD82189 /* Build configuration list for PBXNativeTarget "TokenMonitorMobile" */;
+			buildPhases = (
+				3D0F762729C4B8AD2EFD7058 /* Sources */,
+				863CA3D6E4ABB62F3C74193E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TokenMonitorMobile;
+			packageProductDependencies = (
+			);
+			productName = TokenMonitorMobile;
+			productReference = ADD6A237DDA38E8CED900C22 /* TokenMonitorMobile.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F2DB4F9DFDD0CC29C0C877BB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = 683E383E42713D435FECDF61 /* Build configuration list for PBXProject "TokenMonitorMobile" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 6FD897FBFCA92DCCD71480C5;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = FC158E7F7BE351B983E43671 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F7F233059AE67AA4588601A9 /* TokenMonitorMobile */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		863CA3D6E4ABB62F3C74193E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADDA08FFF2E8536986A47BAE /* Assets.xcassets in Resources */,
+				B7431FA69D5F41A201B3D032 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3D0F762729C4B8AD2EFD7058 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81984377D4FBF1DFD4C01002 /* AppTheme.swift in Sources */,
+				F7F8AE607DF303DBA6F8BFE4 /* AppView.swift in Sources */,
+				E61D408DCAE978D342290DA1 /* DashboardModel.swift in Sources */,
+				0BC1377E567F9B6B1B938F70 /* DashboardView.swift in Sources */,
+				9A61D412CFEAC2C2D182C838 /* HubCredentials.swift in Sources */,
+				2B6C898F88274E5C93F25C33 /* KeychainStore.swift in Sources */,
+				E097B07FE985AEB5CC5E2892 /* SettingsView.swift in Sources */,
+				805DDE4DFCE24D4A6E31D7D6 /* TokenMonitorClient.swift in Sources */,
+				47D84CD98A5090C898FD6F5C /* TokenMonitorMobileApp.swift in Sources */,
+				03C008045F078B54AC75E356 /* TokenMonitorModels.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		24F725FEC4297CF808456373 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Token Monitor";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Token Monitor connects to your private usage hub on the local network.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.topmanidmb.TokenMonitorMobile;
+				PRODUCT_NAME = "Token Monitor";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		27C4D56AF0F3FB37FC626E77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		DFFB21BAF6752E7DB8E30AB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		FC0D2362F63BA3BA43D6BA79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Token Monitor";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Token Monitor connects to your private usage hub on the local network.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.topmanidmb.TokenMonitorMobile;
+				PRODUCT_NAME = "Token Monitor";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		485418236BB1F6028BD82189 /* Build configuration list for PBXNativeTarget "TokenMonitorMobile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24F725FEC4297CF808456373 /* Debug */,
+				FC0D2362F63BA3BA43D6BA79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		683E383E42713D435FECDF61 /* Build configuration list for PBXProject "TokenMonitorMobile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27C4D56AF0F3FB37FC626E77 /* Debug */,
+				DFFB21BAF6752E7DB8E30AB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F2DB4F9DFDD0CC29C0C877BB /* Project object */;
+}

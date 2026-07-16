@@ -17,3 +17,7 @@ npm run build
 ```
 
 ข้อมูลอ้างอิงจาก README ของแต่ละ repository และตรวจล่าสุดเมื่อ 16 กรกฎาคม 2026
+
+## iPhone app
+
+แอป SwiftUI สำหรับดู Usage จาก private Token Monitor hub อยู่ที่ [`ios/TokenMonitorMobile`](ios/TokenMonitorMobile). แอปเก็บ shared secret ใน iOS Keychain และรองรับเฉพาะ hub URL แบบ HTTPS
