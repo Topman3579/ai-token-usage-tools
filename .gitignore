@@ -29,3 +29,6 @@ DerivedData
 .derived
 *.xcuserstate
 xcuserdata/
+
+# derivedData จาก install-direct.sh (ติดตั้งลงเครื่องจริง)
+ios/**/build/
