@@ -16,6 +16,7 @@
 		9A61D412CFEAC2C2D182C838 /* HubCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F9D96F3FA994EFF5343FE9 /* HubCredentials.swift */; };
 		ADDA08FFF2E8536986A47BAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 670A41D32BADE5B049A8545B /* Assets.xcassets */; };
 		B7431FA69D5F41A201B3D032 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 800FCFEE08475541115AEC65 /* PrivacyInfo.xcprivacy */; };
+		B8D763BB9FAC762C732E6E1F /* PrivateHub.plist in Resources */ = {isa = PBXBuildFile; fileRef = 97B449FFD257BBBEB4FE9AD1 /* PrivateHub.plist */; };
 		E097B07FE985AEB5CC5E2892 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2652CF6E9A4D25F106150 /* SettingsView.swift */; };
 		E61D408DCAE978D342290DA1 /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C989B4C8C6E3CD14F45863 /* DashboardModel.swift */; };
 		F7F8AE607DF303DBA6F8BFE4 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9913F96EE462662A2F82894B /* AppView.swift */; };
@@ -28,6 +29,7 @@
 		6879FA64FF823F12774F0C37 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		800FCFEE08475541115AEC65 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		84BF2AE83D961589CF442FC7 /* TokenMonitorClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenMonitorClient.swift; sourceTree = "<group>"; };
+		97B449FFD257BBBEB4FE9AD1 /* PrivateHub.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = PrivateHub.plist; sourceTree = "<group>"; };
 		9913F96EE462662A2F82894B /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		A7F2652CF6E9A4D25F106150 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		ADD6A237DDA38E8CED900C22 /* TokenMonitorMobile.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = TokenMonitorMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +95,7 @@
 			children = (
 				670A41D32BADE5B049A8545B /* Assets.xcassets */,
 				800FCFEE08475541115AEC65 /* PrivacyInfo.xcprivacy */,
+				97B449FFD257BBBEB4FE9AD1 /* PrivateHub.plist */,
 				03DD302C045D06AB392801FD /* App */,
 				905AA81CCA42F87B9EFF8EF7 /* Design */,
 				25FD9236358A18C1F046187F /* Features */,
@@ -191,6 +194,7 @@
 			files = (
 				ADDA08FFF2E8536986A47BAE /* Assets.xcassets in Resources */,
 				B7431FA69D5F41A201B3D032 /* PrivacyInfo.xcprivacy in Resources */,
+				B8D763BB9FAC762C732E6E1F /* PrivateHub.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,11 +228,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Token Monitor";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Token Monitor connects to your private usage hub on the local network.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -276,7 +282,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = PV32ZHE46M;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -296,7 +302,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.1.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -343,7 +349,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = PV32ZHE46M;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -357,7 +363,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.1.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -375,11 +381,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Token Monitor";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Token Monitor connects to your private usage hub on the local network.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

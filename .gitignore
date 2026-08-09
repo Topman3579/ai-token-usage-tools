@@ -32,3 +32,7 @@ xcuserdata/
 
 # derivedData จาก install-direct.sh (ติดตั้งลงเครื่องจริง)
 ios/**/build/
+
+# Private hub secret injected at archive time only (never commit)
+ios/TokenMonitorMobile/Sources/PrivateHub.plist
+ios/TokenMonitorMobile/PrivateHub.plist
