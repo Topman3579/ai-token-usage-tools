@@ -16,7 +16,6 @@
 		9A61D412CFEAC2C2D182C838 /* HubCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F9D96F3FA994EFF5343FE9 /* HubCredentials.swift */; };
 		ADDA08FFF2E8536986A47BAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 670A41D32BADE5B049A8545B /* Assets.xcassets */; };
 		B7431FA69D5F41A201B3D032 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 800FCFEE08475541115AEC65 /* PrivacyInfo.xcprivacy */; };
-		B8D763BB9FAC762C732E6E1F /* PrivateHub.plist in Resources */ = {isa = PBXBuildFile; fileRef = 97B449FFD257BBBEB4FE9AD1 /* PrivateHub.plist */; };
 		E097B07FE985AEB5CC5E2892 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2652CF6E9A4D25F106150 /* SettingsView.swift */; };
 		E61D408DCAE978D342290DA1 /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C989B4C8C6E3CD14F45863 /* DashboardModel.swift */; };
 		F7F8AE607DF303DBA6F8BFE4 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9913F96EE462662A2F82894B /* AppView.swift */; };
@@ -29,7 +28,6 @@
 		6879FA64FF823F12774F0C37 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		800FCFEE08475541115AEC65 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		84BF2AE83D961589CF442FC7 /* TokenMonitorClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenMonitorClient.swift; sourceTree = "<group>"; };
-		97B449FFD257BBBEB4FE9AD1 /* PrivateHub.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = PrivateHub.plist; sourceTree = "<group>"; };
 		9913F96EE462662A2F82894B /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		A7F2652CF6E9A4D25F106150 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		ADD6A237DDA38E8CED900C22 /* TokenMonitorMobile.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = TokenMonitorMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,7 +93,6 @@
 			children = (
 				670A41D32BADE5B049A8545B /* Assets.xcassets */,
 				800FCFEE08475541115AEC65 /* PrivacyInfo.xcprivacy */,
-				97B449FFD257BBBEB4FE9AD1 /* PrivateHub.plist */,
 				03DD302C045D06AB392801FD /* App */,
 				905AA81CCA42F87B9EFF8EF7 /* Design */,
 				25FD9236358A18C1F046187F /* Features */,
@@ -194,7 +191,6 @@
 			files = (
 				ADDA08FFF2E8536986A47BAE /* Assets.xcassets in Resources */,
 				B7431FA69D5F41A201B3D032 /* PrivacyInfo.xcprivacy in Resources */,
-				B8D763BB9FAC762C732E6E1F /* PrivateHub.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

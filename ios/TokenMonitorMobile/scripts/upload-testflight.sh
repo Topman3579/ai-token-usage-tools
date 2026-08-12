@@ -10,21 +10,52 @@ export API_PRIVATE_KEYS_DIR="$HOME/.appstoreconnect/private_keys"
 CLEAN_PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
 if [[ "${1:-}" == "--archive" ]]; then
-  # Inject private hub defaults from local rose credentials (gitignored; never commit).
+  # Inject build-only private configuration. Sources/PrivateHub.plist is gitignored.
   /usr/bin/python3 - <<'PY'
-import json, plistlib
+import json
+import os
+import plistlib
 from pathlib import Path
-cred = json.loads((Path.home() / "Library/Application Support/Token Monitor/credentials.json").read_text())
-secret = cred.get("hubHostSecret") or cred.get("secret")
+from urllib.parse import urlsplit
+
+credentials_path = Path.home() / "Library/Application Support/Token Monitor/credentials.json"
+credentials = json.loads(credentials_path.read_text())
+secret = credentials.get("hubHostSecret") or credentials.get("secret")
+hub_url = (
+    os.environ.get("TOKEN_MONITOR_HUB_URL")
+    or credentials.get("hubURL")
+    or credentials.get("hubUrl")
+    or credentials.get("hubHostURL")
+    or credentials.get("hubHostUrl")
+    or ""
+).strip().rstrip("/")
+
 if not secret:
     raise SystemExit("hub secret missing on this Mac — open Token Monitor host first")
-out = Path("Sources/PrivateHub.plist")
-with out.open("wb") as f:
-    plistlib.dump({
-        "hubURL": "https://rose.tailf4cb89.ts.net:17321",
-        "hubSecret": secret,
-    }, f)
-print(f"▶ PrivateHub.plist ready (secret_len={len(secret)})")
+if not hub_url:
+    raise SystemExit("hub URL missing — set TOKEN_MONITOR_HUB_URL to the private HTTPS URL")
+
+try:
+    parsed = urlsplit(hub_url)
+    port = parsed.port
+except ValueError as error:
+    raise SystemExit(f"invalid hub URL: {error}") from error
+
+if parsed.scheme != "https" or not parsed.hostname:
+    raise SystemExit("hub URL must use HTTPS and include a hostname")
+if parsed.username is not None or parsed.password is not None:
+    raise SystemExit("hub URL must not contain credentials")
+if parsed.query or parsed.fragment:
+    raise SystemExit("hub URL must not contain a query or fragment")
+if parsed.hostname.endswith(".invalid"):
+    raise SystemExit("replace the documentation placeholder with the private hub URL")
+if port is not None and not 1 <= port <= 65535:
+    raise SystemExit("hub URL port must be between 1 and 65535")
+
+output = Path("Sources/PrivateHub.plist")
+with output.open("wb") as file:
+    plistlib.dump({"hubURL": hub_url, "hubSecret": secret}, file)
+print("▶ PrivateHub.plist ready (private values omitted)")
 PY
   # bump build
   CUR=$(grep 'CURRENT_PROJECT_VERSION:' project.yml | grep -oE '[0-9]+' | head -1)

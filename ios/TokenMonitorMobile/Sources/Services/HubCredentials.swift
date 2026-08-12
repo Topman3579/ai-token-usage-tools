@@ -7,8 +7,8 @@ final class HubCredentials {
     private static let urlKey = "token-monitor-hub-url"
     private static let secretKey = "token-monitor-hub-secret"
 
-    /// Private Tailscale hub on rose — open-and-use default for commander devices.
-    static let defaultHubURL = "https://rose.tailf4cb89.ts.net:17321"
+    /// Documentation and previews only. This host can never resolve.
+    static let exampleHubURL = "https://hub.example.invalid"
 
     var hubURL: String
     var secret: String
@@ -18,42 +18,59 @@ final class HubCredentials {
         let storedSecret = KeychainStore.read(key: Self.secretKey)
         let bundled = Self.bundledPrivateHub()
 
-        self.hubURL = hubURL
-            ?? storedURL
-            ?? bundled?.url
-            ?? Self.defaultHubURL
+        // Resolution order keeps upgrades working while avoiding a public topology default:
+        // explicit test/runtime value -> saved Settings -> build-time private plist -> empty.
+        self.hubURL = Self.normalizedURL(
+            hubURL
+                ?? storedURL
+                ?? bundled?.url
+                ?? ""
+        )
         self.secret = secret
             ?? (storedSecret.isEmpty ? (bundled?.secret ?? "") : storedSecret)
 
-        // First launch: seed defaults so the app connects without Settings.
-        if storedURL == nil {
-            UserDefaults.standard.set(self.hubURL, forKey: Self.urlKey)
+        if storedURL == nil, hubURL == nil, let bundledURL = bundled?.url {
+            UserDefaults.standard.set(bundledURL, forKey: Self.urlKey)
         }
-        if storedSecret.isEmpty, !self.secret.isEmpty {
-            KeychainStore.write(self.secret, key: Self.secretKey)
+        if storedSecret.isEmpty, secret == nil, let bundledSecret = bundled?.secret {
+            KeychainStore.write(bundledSecret, key: Self.secretKey)
         }
     }
 
     var isConfigured: Bool {
-        URL(string: hubURL)?.scheme == "https" && !secret.isEmpty
+        Self.isValidHTTPSHubURL(hubURL) && !secret.isEmpty
     }
 
     func save() {
-        hubURL = hubURL.trimmingCharacters(in: .whitespacesAndNewlines).trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+        hubURL = Self.normalizedURL(hubURL)
         UserDefaults.standard.set(hubURL, forKey: Self.urlKey)
         KeychainStore.write(secret, key: Self.secretKey)
     }
 
-    /// Optional build-time secrets from gitignored PrivateHub.plist (injected by upload script).
+    /// Optional build-time configuration from gitignored PrivateHub.plist.
     private static func bundledPrivateHub() -> (url: String, secret: String)? {
         guard let url = Bundle.main.url(forResource: "PrivateHub", withExtension: "plist"),
               let dict = NSDictionary(contentsOf: url) as? [String: String] else { return nil }
-        let hub = (dict["hubURL"] ?? defaultHubURL).trimmingCharacters(in: .whitespacesAndNewlines)
+        let hub = normalizedURL(dict["hubURL"] ?? "")
         let secret = (dict["hubSecret"] ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !secret.isEmpty else { return nil }
+        guard isValidHTTPSHubURL(hub), !secret.isEmpty else { return nil }
         return (hub, secret)
     }
 
-    static let preview = HubCredentials(hubURL: "https://monitor.example.com", secret: "preview-secret")
-}
+    private static func normalizedURL(_ value: String) -> String {
+        value
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+    }
 
+    private static func isValidHTTPSHubURL(_ value: String) -> Bool {
+        guard let components = URLComponents(string: normalizedURL(value)),
+              components.scheme == "https",
+              components.host?.isEmpty == false,
+              components.user == nil,
+              components.password == nil else { return false }
+        return true
+    }
+
+    static let preview = HubCredentials(hubURL: exampleHubURL, secret: "preview-secret")
+}

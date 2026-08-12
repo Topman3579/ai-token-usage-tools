@@ -14,6 +14,7 @@ npm run dev
 ```bash
 npm run lint
 npm run build
+npm run check:public-config
 ```
 
 ข้อมูลอ้างอิงจาก README ของแต่ละ repository และตรวจล่าสุดเมื่อ 16 กรกฎาคม 2026
