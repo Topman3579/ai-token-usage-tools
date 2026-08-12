@@ -1,30 +1,43 @@
 # Token Monitor (AI Monitor) · iPhone / iPad
 
-อัปเดต: 2026-08-04
+อัปเดต: 2026-08-12
 
 ## ภาพรวม
 
-แอปมือถืออ่าน **private hub** บน rose:
+แอปมือถืออ่าน private Token Monitor hub ผ่าน HTTPS ภายใน Tailscale เท่านั้น โดย repository สาธารณะนี้ไม่เก็บ hostname, tailnet หรือ port ที่ใช้งานจริง
 
 | รายการ | ค่า |
 |--------|-----|
-| Hub URL | `https://rose.tailf4cb89.ts.net:17321` |
+| Hub URL | กำหนดจาก `tailscale serve status` บนเครื่อง host หรือกรอกใน Settings |
 | API | `GET /api/stats` + `Authorization: Bearer <secret>` |
-| Secret | เก็บใน **Keychain** บนมือถือ (ห้าม commit / แชท) |
-| macOS hub | Token Monitor 0.36 · `hubMode=host` · port 17321 |
+| Secret | เก็บใน Keychain บนมือถือและ build-time plist ที่ถูก ignore จาก Git |
+| ตัวอย่างที่ใช้เชื่อมต่อไม่ได้ | `https://hub.example.invalid` |
 
-บัญชี AI เดียวกัน ≠ TOTAL tokens เท่ากันทุกเครื่อง  
-TOTAL = log ต่อเครื่อง · ดูรวมที่ hub (rose)
+บัญชี AI เดียวกันไม่ได้หมายความว่า TOTAL tokens จะเท่ากันทุกเครื่อง เพราะ TOTAL มาจาก log ต่อเครื่องและรวมผลที่ hub
 
 ## เงื่อนไขก่อนใช้มือถือ
 
-1. **rose** เปิด Token Monitor (hub) — launchd `com.topmanidmb.token-monitor-hub` ช่วยเปิดตอน login  
-2. `tailscale serve --bg --https=17321 17321` บน rose  
-3. `curl -s http://127.0.0.1:17321/api/health` → `"role":"hub"`  
-4. มือถือ: Tailscale Connected บน tailnet เดียวกัน  
-5. travis / macpro: Token Monitor `hubMode=client` ชี้ hub URL ด้านบน
+1. เปิด Token Monitor แบบ hub บนเครื่องส่วนตัว
+2. เปิด HTTPS เฉพาะใน tailnet โดยใช้ port จาก private host configuration
+3. ตรวจ `/api/health` แล้วต้องได้ `"role":"hub"`
+4. iPhone/iPad ต้องเชื่อมต่อ Tailscale ใน tailnet เดียวกัน
+5. เครื่อง client อื่นต้องชี้ไปยัง Hub URL เดียวกัน
 
-## ทาง A — ติดตั้งพัฒนา (ทำแล้วบนเครื่องผู้การ 16 ก.ค. 69)
+ตัวอย่างตั้งค่า host โดยไม่บันทึก topology จริงลง Git:
+
+```zsh
+read -r "TOKEN_MONITOR_HUB_PORT?Private hub port: "
+tailscale serve --bg --https="$TOKEN_MONITOR_HUB_PORT" "$TOKEN_MONITOR_HUB_PORT"
+tailscale serve status
+
+read -r "TOKEN_MONITOR_HUB_URL?HTTPS URL from tailscale serve status: "
+export TOKEN_MONITOR_HUB_URL
+curl -sS "${TOKEN_MONITOR_HUB_URL%/}/api/health"
+```
+
+ห้ามใช้ `tailscale funnel` เพราะจะเปิด service ออกสู่อินเทอร์เน็ตสาธารณะ
+
+## ทาง A — ติดตั้งพัฒนา
 
 ```bash
 cd ~/projects/ai-token-usage-tools/ios/TokenMonitorMobile
@@ -32,36 +45,39 @@ xcodegen generate
 open TokenMonitorMobile.xcodeproj
 ```
 
-Xcode → เลือก iPhone/iPad → Run  
-bundle id: `net.topmanidmb.TokenMonitorMobile` · team `PV32ZHE46M`
+เลือก iPhone/iPad ใน Xcode แล้วกด Run จากนั้นกรอกในหน้า Settings:
 
-ในแอป Settings:
+- Hub URL: ค่า HTTPS ที่ได้จาก `tailscale serve status`
+- Shared secret: ค่าเดียวกับ Token Monitor host — ห้าม commit หรือใส่ใน chat
 
-- Hub URL: `https://rose.tailf4cb89.ts.net:17321`
-- Shared secret: ค่าเดียวกับ Token Monitor macOS (Hub host secret) — อย่าแปะใน Git
+แอปจะเก็บ Hub URL ใน UserDefaults และ secret ใน Keychain การอัปเกรดจากเวอร์ชันเดิมยังคงใช้ค่าที่เคยบันทึกไว้ได้ ส่วนการติดตั้งใหม่จะไม่มี endpoint เริ่มต้นจนกว่าจะกรอก Settings หรือ inject private build configuration
 
 ## ทาง B — TestFlight
 
-ยัง**ไม่ได้**อัปโหลด TestFlight อย่างเป็นทางการในรอบก่อน (ใช้ USB/dev แทน)
+สคริปต์ archive จะอ่าน Hub URL จากตัวแปร `TOKEN_MONITOR_HUB_URL` และอ่าน secret จากไฟล์ local ของ Token Monitor จากนั้นสร้าง `Sources/PrivateHub.plist` ซึ่งถูก `.gitignore` ไว้
 
-ขั้นตอนเมื่อผู้การต้องการ:
+```zsh
+cd ~/projects/ai-token-usage-tools/ios/TokenMonitorMobile
+read -r "TOKEN_MONITOR_HUB_URL?Private HTTPS hub URL: "
+export TOKEN_MONITOR_HUB_URL
+./scripts/upload-testflight.sh --archive
+```
 
-1. Xcode → Archive → Upload App Store Connect  
-2. สร้าง app record ถ้ายังไม่มี (bundle `net.topmanidmb.TokenMonitorMobile`)  
-3. TestFlight Internal → เพิ่ม tester  
-4. ติดตั้งจาก TestFlight → ใส่ hub URL + secret เหมือนเดิม  
-5. ยังต้องมี **Tailscale** เสมอ (hub ไม่ public)
+สคริปต์จะหยุดทันทีเมื่อ URL ไม่ใช่ HTTPS, มี username/password ฝังอยู่, ใช้โดเมนตัวอย่าง `.invalid` หรือหา secret ในเครื่องไม่พบ
+
+หลังอัปโหลด:
+
+1. ตรวจ app record ของ bundle `net.topmanidmb.TokenMonitorMobile`
+2. รอ build ประมวลผลใน TestFlight
+3. เพิ่ม internal tester
+4. ติดตั้งแล้วตรวจ Hub URL และการเชื่อมต่อ Tailscale
 
 ## ซ่อม hub เมื่อตัวเลขค้าง
 
-```bash
-# บน rose
+```zsh
 open -a "Token Monitor"
-curl -s http://127.0.0.1:17321/api/health
-
-# บน travis / macpro
-open -a "Token Monitor"
-# settings: hubMode=client, hubUrl=https://rose.tailf4cb89.ts.net:17321
+read -r "TOKEN_MONITOR_HUB_URL?Private HTTPS hub URL: "
+curl -sS "${TOKEN_MONITOR_HUB_URL%/}/api/health"
 ```
 
-Clients ที่ online จะอัปเดต `lastSeen` บน hub ภายใน ~15–30 วินาที
+เปิด Token Monitor บนเครื่อง client และตรวจว่า `hubMode=client` ชี้ไปยัง URL เดียวกัน Clients ที่ online ควรอัปเดต `lastSeen` บน hub ภายในประมาณ 15–30 วินาที
